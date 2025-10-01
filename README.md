@@ -65,8 +65,11 @@ This repository contains a comprehensive collection of React.js applications dem
 
 ## Getting Started
 
-1. Navigate to any project directory: cd <project-directory>
-2. Install dependencies: npm install
-3. Run the development server: npm run dev
+1. Navigate to any project directory:
+   `cd <project-directory>`
+2. Install dependencies:
+   `npm install`
+3. Run the development server:
+   `npm run dev`
 
 Created for Advanced Technology Course 2025
