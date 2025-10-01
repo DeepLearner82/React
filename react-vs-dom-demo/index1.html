@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Real DOM vs Virtual DOM (Partial Update)</title>
+    <style>
+      #container {
+        display: flex;
+        gap: 50px;
+      }
+      div {
+        padding: 10px;
+        border: 1px solid #ccc;
+        max-height: 400px;
+        overflow-y: auto;
+      }
+      button {
+        margin: 5px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Real DOM vs Virtual DOM (Partial Update)</h1>
+    <div id="container">
+      <!-- Real DOM -->
+      <div>
+        <h2>Real DOM Update</h2>
+        <div id="realList"></div>
+        <button id="realBtn">Update 10 Items</button>
+      </div>
+
+      <!-- React will mount here -->
+      <div id="reactRoot"></div>
+    </div>
+
+    <!-- Vite injects React build automatically -->
+    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/real-dom.js"></script>
+  </body>
+</html>

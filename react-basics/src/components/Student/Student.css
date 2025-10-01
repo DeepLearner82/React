@@ -1,0 +1,36 @@
+/* .student-list {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  max-width: 500px;
+  margin: 2rem auto;
+}
+
+.student-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  background: #f3f4f6;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.06);
+  transition: background 0.2s;
+}
+.student-item:last-child {
+  margin-bottom: 0;
+}
+.student-item:hover {
+  background: #e0e7ff;
+}
+.student-name {
+  font-weight: 600;
+  color: #6366f1;
+  font-size: 1.15em;
+}
+.student-branch {
+  color: #374151;
+  font-size: 1em;
+  font-style: italic;
+} */

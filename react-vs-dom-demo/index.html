@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Real DOM vs Virtual DOM (Partial Update)</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/babel-standalone@6/babel.min.js"
+    ></script>
+    <style>
+      #container {
+        display: flex;
+        gap: 50px;
+      }
+      div {
+        padding: 10px;
+        border: 1px solid #ccc;
+        max-height: 400px;
+        overflow-y: auto;
+      }
+      button {
+        margin: 5px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Real DOM vs Virtual DOM (Partial Update)</h1>
+    <div id="container">
+      <!-- Real DOM -->
+      <div>
+        <h2>Real DOM Update</h2>
+        <div id="realList"></div>
+        <button id="realBtn">Update 5 Items</button>
+      </div>
+
+      <!-- Virtual DOM -->
+      <div id="reactRoot"></div>
+    </div>
+
+    <script type="text/babel">
+      // ----------- Real DOM Approach -----------
+      const realList = document.getElementById("realList");
+      // Create 1000 paragraphs
+      for (let i = 0; i < 1000; i++) {
+        const p = document.createElement("p");
+        p.textContent = "Item " + i;
+        realList.appendChild(p);
+      }
+
+      document.getElementById("realBtn").addEventListener("click", () => {
+        console.time("Real DOM Paint Time");
+        // Update ALL 1000 nodes, even though only 10 changed
+        for (let i = 0; i < 1000; i++) {
+          if (i < 5) {
+            realList.children[i].textContent = "Updated Item " + i;
+          } else {
+            realList.children[i].textContent = "Item " + i; // re-assign unchanged text
+          }
+        }
+        requestAnimationFrame(() => {
+          console.timeEnd("Real DOM Paint Time");
+        });
+      });
+
+      // ----------- Virtual DOM (React) -----------
+      function List() {
+        const [items, setItems] = React.useState(
+          Array.from({ length: 1000 }, (_, i) => "Item " + i)
+        );
+
+        function updateItems() {
+          console.time("Virtual DOM Paint Time");
+          setItems((prevItems) =>
+            prevItems.map((item, i) => (i < 5 ? "Updated Item " + i : item))
+          );
+          requestAnimationFrame(() => {
+            console.timeEnd("Virtual DOM Paint Time");
+          });
+        }
+
+        return (
+          <div>
+            <h2>Virtual DOM Update</h2>
+            <div>
+              {items.map((item, i) => (
+                <p key={i}>{item}</p>
+              ))}
+            </div>
+            <button onClick={updateItems}>Update 5 Items</button>
+          </div>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById("reactRoot"));
+      root.render(<List />);
+    </script>
+  </body>
+</html>

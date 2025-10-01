@@ -1,0 +1,49 @@
+/* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: #f5f7fa;
+  color: #333;
+}
+
+/* Navigation Bar */
+nav {
+  margin-bottom: 20px;
+  padding: 10px;
+  background: #282c34;
+  border-radius: 8px;
+}
+
+nav a,
+nav button {
+  color: white;
+  text-decoration: none;
+  margin-right: 15px;
+  font-weight: bold;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+nav a:hover,
+nav button:hover {
+  text-decoration: underline;
+}
+
+/* Active Link Style (for React Router’s NavLink) */
+.active-link {
+  color: hsl(315, 95%, 68%);
+}
+
+/* Page Container */
+h2 {
+  margin-top: 0;
+  color: #282c34;
+  font-size: 24px;
+}
+
+p {
+  font-size: 18px;
+}
